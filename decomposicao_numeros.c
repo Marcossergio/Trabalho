@@ -1,30 +1,36 @@
-def is_prime(n):
-    if n <= 1:
-        return False
-    for i in range(2, int(n**0.5) + 1):
-        if n % i == 0:
-            return False
-    return True
+#include <stdio.h>
 
-def goldbach_conjecture(n):
-    if n <= 2 or n % 2 != 0:
-        print("Apenas números inteiros pares maiores que 2 são permitidos.")
-        return
-    
-    for i in range(2, n//2 + 1):
-        if is_prime(i) and is_prime(n - i):
-            print(f"{n} = {i} + {n - i}")
-            return
+// Função para verificar se um número é primo
+int eh_primo(int n) {
+    int i;
+    if (n <= 1)
+        return 0;
+    for (i = 2; i * i <= n; i++) {
+        if (n % i == 0)
+            return 0;
+    }
+    return 1;
+}
 
-# Solicita ao usuário um número inteiro maior que 2
-while True:
-    try:
-        num = int(input("Digite um número inteiro maior que 2: "))
-        if num > 2:
-            break
-        else:
-            print("Por favor, digite um número maior que 2.")
-    except ValueError:
-        print("Por favor, digite um número inteiro válido.")
+// Função para encontrar a decomposição
+void decompor_em_primos(int n) {
+    int i;
+    for (i = 2; i <= n / 2; i++) {
+        if (eh_primo(i) && eh_primo(n - i)) {
+            printf("%d = %d + %d\n", n, i, n - i);
+            return;
+        }
+    }
+}
 
-goldbach_conjecture(num)
+int main() {
+    int n;
+    printf("Digite um número inteiro maior que 2: ");
+    scanf("%d", &n);
+    if (n <= 2) {
+        printf("O número deve ser maior que 2.\n");
+        return 0;
+    }
+    decompor_em_primos(n);
+    return 0;
+}
