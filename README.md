@@ -20,6 +20,7 @@ Se encontrar uma combinação válida, exibe a decomposição. Caso contrário, 
 Exemplos de Execução do programa:
 
 Usuário utiliza o número 7:
+
 ![Teste-funciona (1)](https://github.com/Marcossergio/Trabalho/assets/146399385/f6f4cb25-f345-4dc3-bd48-70715694208d)
 
 Usuário utiliza um número, igual ou menor que 2:
